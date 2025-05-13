@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import DefaultLayout from "./layout/DefaultLayout"
 import Movies from "./pages/Movies"
-import MovieDetail from "./pages/MovieDetail"
+import MovieDetails from "./pages/MovieDetails"
 function App() {
 
 
@@ -12,7 +12,7 @@ function App() {
         <Route element={<DefaultLayout />}>
           <Route path="/">
             <Route index element={<Movies />} />
-            <Route path=":id" element={<MovieDetail />} />
+            <Route path=":id" element={<MovieDetails />} />
           </Route>
         </Route>
       </Routes>
