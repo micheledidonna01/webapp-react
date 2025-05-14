@@ -9,6 +9,8 @@ const Movies = () => {
     const [movies, setMovies] = useState([]);
 
     const [search, setSearch] = useState('');
+
+
     function getMovies() {
 
         axios.get(api, {
@@ -27,16 +29,18 @@ const Movies = () => {
         getMovies();
         setSearch('');
     }
-    useEffect(getMovies, []);
 
-    console.log(movies);
+
+
+    useEffect(getMovies, []);
+    
 
     return <div className="px-5 mb-5">
         <div className="d-flex justify-content-between mb-5">
             <h1 className="mb-3">Movies</h1>
             <form onSubmit={searchMovies}>
-                <div class="d-flex">
-                    <label for="exampleInputEmail1" className="visually-hidden">Email address</label>
+                <div className="d-flex">
+                    <label htmlFor="exampleInputEmail1" className="visually-hidden">Email address</label>
                     <input
                         type="text"
                         className="form-control"
@@ -55,6 +59,9 @@ const Movies = () => {
             )) : <div>Nessun fil trovato</div>}
 
         </div>
+        <hr />
+
+        
     </div>
 }
 
