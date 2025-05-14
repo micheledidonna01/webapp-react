@@ -34,23 +34,24 @@ const Movies = () => {
     return <div className="px-5 mb-5">
         <div className="d-flex justify-content-between mb-5">
             <h1 className="mb-3">Movies</h1>
-            <form onSubmit={searchMovies} className="row g-3">
-                <div className="col-auto">
-                <label htmlFor="" className="visually-hidden"></label>
-                <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => setSearch(e.target.value)}
-                    value={search}
-                />
-                <button className="btn btn-outline-primary" type="submit">Search</button>
+            <form onSubmit={searchMovies}>
+                <div class="d-flex">
+                    <label for="exampleInputEmail1" className="visually-hidden">Email address</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        onChange={(e) => setSearch(e.target.value)}
+                        value={search}
+                    />
+                    <button className="btn btn-outline-primary" type="submit">Search</button>
                 </div>
             </form>
+
         </div>
 
         <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
             {movies.length ? movies.map((movie) => (
-                <MoviesList key={movie.id} data={movie} />
+                <MoviesList key={movie.id} data={movie}/>
             )) : <div>Nessun fil trovato</div>}
 
         </div>
