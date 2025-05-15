@@ -1,34 +1,36 @@
 
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import ReviewMovie from "../components/ReviewMovie";
 import StarRating from "../components/StarRating";
 import FormReview from "../components/FormReview";
+import ContextLoader from "../contexts/contextLoader";
+import ContextError from "../contexts/contextError";
 
 const MovieDetails = () => {
 
     const [movie, setMovie] = useState(null);
-    let [loading, setLoading] = useState(true);
-    let [error, setError] = useState(false);
-
-    const api = "http://127.0.0.1:3005/api/movies";
-    let { id } = useParams();
     
 
+    const api = "http://127.0.0.1:3005/api/movies";
+    let { slug } = useParams();
+    console.log(slug);
+    const {setIsLoading} = useContext(ContextLoader);
+    const {setIsError} = useContext(ContextError);
 
     function getMovie() {
-        setLoading(true);
-        axios.get(`${api}/${id}`)
+        setIsLoading(true);
+        axios.get(`${api}/${slug}`)
             .then(res => {
                 setMovie(res.data);
             })
             .catch(err => {
                 console.log(err);
-                setError(true);
+                setIsError(true);
             })
             .finally(() => {
-                setLoading(false);
+                setIsLoading(false);
             })
     }
 
@@ -43,21 +45,10 @@ const MovieDetails = () => {
 
     useEffect(getMovie, []);
 
-    if (loading) {
-        return <p className="text-center">
-            Sto caricando il post...
-        </p>
-    }
-
-    if (error) {
-        return <p className="text-center">
-            C'è stato un errore durante il caricamento
-        </p>
-    }
 
     return <div className="px-5">
         <div className="d-flex row justify-content-center mt-4 bg">
-            <img src={movie.imagePath} alt={movie.title} className="w-50" />
+            <img src={movie?.imagePath} alt={movie?.title} className="w-50" />
             <h1 className="text-uppercase text-center py-2 fs-1">{movie?.title}</h1>
 
             {/* <p className="text-center my-5">{movie.title}</p> */}
@@ -76,7 +67,7 @@ const MovieDetails = () => {
         <hr />
         
         {/* review movie */}
-        {movie.reviews? <div className="my-5 d-flex row gap-2 px-3">
+        {movie?.reviews? <div className="my-5 d-flex row gap-2 px-3">
             <div className="d-flex justify-content-between">
                 <h3>Reviews:</h3>
                 <p>vote: <StarRating vote={movie?.voto_medio}/></p>
@@ -86,7 +77,7 @@ const MovieDetails = () => {
         }
 
         {/* form review movie */}
-        <FormReview id={id} getMovie={getMovie}/>
+        <FormReview slug={slug} getMovie={getMovie}/>
         
     </div>
 }

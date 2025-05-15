@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 
-const FormReview = ({id, getMovie})=>{
+const FormReview = ({ slug, getMovie})=>{
     let defaultForm = {
         name: "",
         text: "",
         vote: 1
     };
 
-    console.log(id);
 
     const [formData, setFormData] = useState(defaultForm);
 
@@ -29,7 +28,7 @@ const FormReview = ({id, getMovie})=>{
     function handleSubmit(e) {
         e.preventDefault();
         
-        axios.post(`http://127.0.0.1:3005/api/movies/${id}/reviews`, formData)
+        axios.post(`http://127.0.0.1:3005/api/movies/${slug}/reviews`, formData)
         .then(res => {
             console.log(res);
         })

@@ -9,16 +9,23 @@ const AddMovie = ()=>{
         genre: "",
         release_year: 1999,
         abstract: "",
-        image: "",
+        image: null,
     }
     const [newMovie, setNewMovie] = useState(defaultMovie);
 
     function handleFormMovie(e) {
-        let { name, value } = e.target;
-        let currentValue = value;
-        // if(name === 'release_year'){
-        //     currentValue = parseInt(value);
-        // }
+        let { name, value, files } = e.target;
+        let currentValue;
+
+        if(name === 'image'){
+            currentValue = files[0];
+        } else {
+            currentValue = value;
+        }
+        
+        if(name === 'release_year'){
+            currentValue = parseInt(value);
+        }
         setNewMovie((newMovie) => ({
             ...newMovie,
             [name]: currentValue
@@ -29,16 +36,21 @@ const AddMovie = ()=>{
     function handleSubmitMovie(e) {
         e.preventDefault();
 
-        axios.post(`http://127.0.0.1:3005/api/movies/add-movie`, newMovie)
+        axios.post(`http://127.0.0.1:3005/api/movies/add-movie`, newMovie, {headers:{
+            "Content-Type": 'multipart/form-data'
+        }
+        })
             .then(res => {
                 console.log(res);
+                setNewMovie(defaultMovie);
             })
             .catch(err => console.log(err));
         
         
-        setNewMovie(defaultMovie);
+        
+        console.log(newMovie);
     }
-    console.log(newMovie);
+    
 
     return <div className="px-5">
         <div className="card my-5">
@@ -107,10 +119,9 @@ const AddMovie = ()=>{
                     </div>
                     <div className="form-floating mb-3">
                         <input
-                            type="text"
+                            type="file"
                             className="form-control"
                             onChange={handleFormMovie}
-                            value={newMovie.image}
                             name="image"
                             placeholder="dirigente"
                         />
