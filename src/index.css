@@ -1,4 +1,25 @@
-i{
+#root {
+  font-family: "Inter", sans-serif;
+  background-color: #1c1c1c;
+}
+
+i {
   width: 25px;
   height: 25px;
+}
+
+.logo-image {
+  width: 100px;
+}
+
+main {
+  padding-top: 200px;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.barra-ricerca{
+  height: 100px;
 }
