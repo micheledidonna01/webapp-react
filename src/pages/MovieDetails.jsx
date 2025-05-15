@@ -46,7 +46,7 @@ const MovieDetails = () => {
     useEffect(getMovie, []);
 
 
-    return <div className="px-5">
+    return <div className="px-5 text-light">
         <div className="d-flex row justify-content-center mt-4 bg">
             <img src={movie?.imagePath} alt={movie?.title} className="w-50" />
             <h1 className="text-uppercase text-center py-2 fs-1">{movie?.title}</h1>
@@ -56,7 +56,7 @@ const MovieDetails = () => {
 
         <hr />
 
-            <div className="d-flex row h-100 px-3">
+            <div className="d-flex row h-100 px-3 ">
                 <p><span className="fw-bold">Author:</span>{movie?.director}</p>
                 <p><span className="fw-bold">Genre:</span>{movie?.genre}</p>
                 {/* <p><span className="fw-bold">Genre:</span>{movie.reviews[0].vote}</p>
@@ -67,7 +67,7 @@ const MovieDetails = () => {
         <hr />
         
         {/* review movie */}
-        {movie?.reviews? <div className="my-5 d-flex row gap-2 px-3">
+        {movie?.reviews? <div className="my-5 d-flex row gap-3 px-3">
             <div className="d-flex justify-content-between">
                 <h3>Reviews:</h3>
                 <p>vote: <StarRating vote={movie?.voto_medio}/></p>

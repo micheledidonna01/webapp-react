@@ -6,6 +6,8 @@ import AddMovie from "./pages/AddMovie"
 import { useState } from "react"
 import ContextLoader from "./contexts/contextLoader"
 import ContextError from "./contexts/contextError"
+import About from "./pages/About"
+import ContactUs from "./pages/ContactUs"
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
                 <Route index element={<Movies />} />
                 <Route path="add-movie" element={<AddMovie />} />
                 <Route path=":slug" element={<MovieDetails isLoading={setIsLoading} />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact-us" element={<ContactUs />} />
               </Route>
             </Route>
           </Routes>

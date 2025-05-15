@@ -78,7 +78,7 @@ const Movies = () => {
         <Link to="/add-movie" className="text-decoration-none text-dark btn btn-secondary">Add Movie</Link>
         </div>
 
-        <div className="d-flex row">
+        <div className="row g-3">
             {movies.length ? movies.map((movie) => (
                 <MoviesList key={movie.id} data={movie}/>
             )) : <div>Nessun fil trovato</div>}

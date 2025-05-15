@@ -36,8 +36,8 @@ const FormReview = ({ slug, getMovie})=>{
         getMovie();
         setFormData(defaultForm);
     }
-    return <div className="card mb-5">
-        <div className="card-header">
+    return <div className="card mb-5 border-dark">
+        <div className="card-header bg-dark text-light">
             <h4>Add a new review</h4>
         </div>
 
@@ -77,7 +77,7 @@ const FormReview = ({ slug, getMovie})=>{
                     />
                     <label htmlFor="vote">Vote</label>
                 </div>
-                <button className="btn btn-outline-primary" type="submit">send review</button>
+                <button className="btn btn-outline-danger text-dark" type="submit">send review</button>
             </form>
         </div>
     </div>

@@ -7,18 +7,15 @@ const Header = () => {
                 <Link className="navbar-brand" to="/">
                     <img src="../../public/logo.png" alt="logo" className="logo-image" />
                 </Link>
-                <ul className="nav nav-pills nav-justified text-dark">
+                <ul className="nav text-dark d-flex gap-2">
                     <li className="nav-item">
-                        <NavLink to="/" className="nav-link bg-danger text-dark">Movies</NavLink>
+                        <NavLink to="/" className="nav-link">Movies</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-dark" href="#">Link</a>
+                        <NavLink to="/contact-us" className="nav-link">Contact</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-dark" href="#">Link</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link text-dark" href="#">Link</a>
+                        <NavLink to="/about" className="nav-link">About</NavLink>
                     </li>
                 </ul>
                 {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
